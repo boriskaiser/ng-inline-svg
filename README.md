@@ -90,13 +90,13 @@ Here is one way to achieve this dynamically by adding an app initalizing service
 
 *app-server.module.ts*:
 ```typescript
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { InlineSVGConfig } from 'ng-inline-svg';
-import { SVGonfig } from './svg-config';
+import { SVGConfig } from './svg-config';
  
 @NgModule({
   providers: [
-    { provide: InlineSVGConfig, useClass: SVGonfig }
+    { provide: InlineSVGConfig, useClass: SVGConfig }
   ]
 })
 export class AppServerModule {}
@@ -104,11 +104,11 @@ export class AppServerModule {}
 
 *svg-config.ts*:
 ```typescript
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { InlineSVGConfig } from 'ng-inline-svg';
 
 @Injectable()
-export class SVGonfig extends InlineSVGConfig {
+export class SVGConfig extends InlineSVGConfig {
   // Do what ever conditions you need to set this, e.g. checking for server-side rendering
   // and only set baseURL when server-side rendered if you want.
 
